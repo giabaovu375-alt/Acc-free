@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nhận 68K Acc Game Free</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; font-family:system-ui,sans-serif; }
+  body {
+    min-height:100vh; display:flex; align-items:center; justify-content:center;
+    background:#0b0e17; color:#fff; padding:20px;
+    background-image:radial-gradient(circle at 20% 0%,rgba(124,58,237,.3),transparent 45%),
+                     radial-gradient(circle at 80% 100%,rgba(34,211,238,.2),transparent 45%);
+  }
+  .box {
+    background:#131826; border:1px solid #2b3450; border-radius:20px;
+    max-width:400px; width:100%; padding:30px; text-align:center;
+  }
+  h1 { font-size:22px; margin-bottom:6px; }
+  .sub { color:#8b93a8; font-size:14px; margin-bottom:24px; }
+  .btn {
+    display:block; width:100%; padding:14px; margin-bottom:12px; border:none;
+    border-radius:12px; font-size:16px; font-weight:700; cursor:pointer; transition:.2s;
+  }
+  .step { background:#7c3aed; color:#fff; }
+  .step:disabled { background:#232a3d; color:#5b6478; cursor:not-allowed; }
+  .step.ok { background:#10b981; }
+  #btnDl { background:linear-gradient(90deg,#f59e0b,#ef4444); color:#fff; display:none; }
+  .done { color:#8b93a8; font-size:12px; margin-top:8px; }
+</style>
+</head>
+<body>
+
+<div class="box">
+  <h1>🎁 Kho 68K Acc Game Free</h1>
+  <p class="sub">Hoàn thành 2 bước để lấy link tải file acc 👇</p>
+
+  <button class="btn step" id="b1">👍 Bước 1: Like video</button>
+  <button class="btn step" id="b2" disabled>➕ Bước 2: Follow kênh</button>
+  <button class="btn" id="btnDl">⬇️ TẢI FILE ACC NGAY</button>
+
+  <p class="done">Làm xong 2 bước là nút tải hiện ra nhé!</p>
+</div>
+
+<script>
+/* ===== CẤU HÌNH ===== */
+const LIKE_URL     = "https://www.tiktok.com/@ten_kenh/video/123456789";
+const FOLLOW_URL   = "https://www.tiktok.com/@ten_kenh";
+const DOWNLOAD_URL = "https://www.mediafire.com/file/1qfbdnh8983f5fw/68k_acc_loc_trung.txt/file";
+const CHO_GIAY     = 5;
+/* =================== */
+
+const b1 = document.getElementById("b1");
+const b2 = document.getElementById("b2");
+const dl = document.getElementById("btnDl");
+
+function go(btn, url, nextBtn, doneText) {
+  window.open(url, "_blank");
+  let t = CHO_GIAY;
+  btn.disabled = true;
+  btn.textContent = `Chờ ${t}s...`;
+  const timer = setInterval(() => {
+    t--;
+    if (t > 0) btn.textContent = `Chờ ${t}s...`;
+    else {
+      clearInterval(timer);
+      btn.classList.add("ok");
+      btn.textContent = doneText;
+      if (nextBtn) {
+        nextBtn.disabled = false;
+        nextBtn.style.display = "block"; // ← FIX: hiện nút tải
+      }
+    }
+  }, 1000);
+}
+
+b1.onclick = () => go(b1, LIKE_URL,   b2, "✔ Đã like");
+b2.onclick = () => go(b2, FOLLOW_URL, dl, "✔ Đã follow");
+dl.onclick = () => window.open(DOWNLOAD_URL, "_blank");
+</script>
+
+</body>
+</html>
